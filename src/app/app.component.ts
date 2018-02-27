@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 import { LogModel, StepModel } from './lib/avine-log/avine-log.model';
-import * as plugin from './lib/plugin/plugin';
 
 @Component({
   selector: 'avn-root',
@@ -26,7 +25,7 @@ export class AppComponent {
     this.steps = [
       {
         title: `Adding log ${this.counter}`,
-        callback: () => plugin.log(`title ${this.counter}`, `desc ${this.counter}`)
+        callback: () => console.log('ok') // plugin.log(`title ${this.counter}`, `desc ${this.counter}`)
       }
     ];
   }

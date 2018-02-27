@@ -14,7 +14,7 @@ import {
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-import * as plugin from '../plugin/plugin';
+import Stepper from '../plugin/plugin';
 import { LogModel, StepModel } from './avine-log.model';
 
 @Component({
@@ -24,32 +24,29 @@ import { LogModel, StepModel } from './avine-log.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AvineLogComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
-  @Input() log$: Observable<LogModel>;
-  @Input() steps: StepModel[] = [];
-
-  @Output() onlog = new EventEmitter<LogModel>();
-
   @ViewChild('wrapper') wrapper: ElementRef;
 
-  subscription: Subscription;
+  @Input() log$: Observable<LogModel>;
+  @Input() steps: StepModel[] = [];
+  @Output() onlog = new EventEmitter<LogModel>();
 
-  logsDom: HTMLElement;
+  stepper: Stepper;
+  subscription: Subscription;
 
   constructor() { }
 
   ngOnInit() {
-    plugin.init(this.wrapper.nativeElement);
-
-    const subscription = this.log$.subscribe(log => plugin.log(log.title, log.message));
+    this.stepper = new Stepper(this.wrapper.nativeElement);
+    const subscription = this.log$.subscribe(log => this.stepper.log(log.title, log.message));
   }
 
   ngAfterViewInit() {
-    this.logsDom = this.wrapper.nativeElement.querySelector('.helper-logs');
-    this.logsDom.addEventListener('avnlog', (event: CustomEvent) => this.onlog.emit(event.detail));
+    this.stepper.$logs = this.wrapper.nativeElement.querySelector('.helper-logs');
+    this.stepper.$logs.addEventListener('avnlog', (event: CustomEvent) => this.onlog.emit(event.detail));
   }
 
   ngOnChanges() {
-    this.steps.forEach(step => plugin.step(step.title, step.callback));
+    this.steps.forEach(step => this.stepper.step(step.title, step.callback));
   }
 
   ngOnDestroy() {

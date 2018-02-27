@@ -6,4 +6,5 @@ export interface LogModel {
 export interface StepModel {
   title: string;
   callback: Function;
+  clean?: boolean;
 }
