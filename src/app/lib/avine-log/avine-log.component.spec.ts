@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvineLogComponent } from './avine-log.component';
+import { AvnStepperComponent } from './avine-log.component';
 
 describe('AvineLogComponent', () => {
-  let component: AvineLogComponent;
-  let fixture: ComponentFixture<AvineLogComponent>;
+  let component: AvnStepperComponent;
+  let fixture: ComponentFixture<AvnStepperComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AvineLogComponent ]
+      declarations: [ AvnStepperComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AvineLogComponent);
+    fixture = TestBed.createComponent(AvnStepperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

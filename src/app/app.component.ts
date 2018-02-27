@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 import { LogModel, StepModel } from './lib/avine-log/avine-log.model';
+import { AvnStepperService } from './lib/avine-log/avine-log.service';
 
 @Component({
   selector: 'avn-root',
@@ -9,12 +10,11 @@ import { LogModel, StepModel } from './lib/avine-log/avine-log.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
   log$: Subject<LogModel> = new Subject();
-
+  steps: StepModel[] = [];
   counter = 0;
 
-  steps: StepModel[] = [];
+  constructor(private stepperService: AvnStepperService) { }
 
   addLog() {
     this.log$.next({ title: 'ok', message: 'yes!' });
@@ -25,7 +25,7 @@ export class AppComponent {
     this.steps = [
       {
         title: `Adding log ${this.counter}`,
-        callback: () => console.log('ok') // plugin.log(`title ${this.counter}`, `desc ${this.counter}`)
+        callback: () => this.stepperService.log(`title ${this.counter}`, `desc ${this.counter}`)
       }
     ];
   }

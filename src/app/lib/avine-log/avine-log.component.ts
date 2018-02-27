@@ -13,9 +13,11 @@ import {
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { merge } from 'rxjs/observable/merge';
 
 import Stepper from '../plugin/plugin';
 import { LogModel, StepModel } from './avine-log.model';
+import { AvnStepperService } from './avine-log.service';
 
 @Component({
   selector: 'avn-avine-log',
@@ -23,7 +25,7 @@ import { LogModel, StepModel } from './avine-log.model';
   styleUrls: ['./avine-log.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AvineLogComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
+export class AvnStepperComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
   @ViewChild('wrapper') wrapper: ElementRef;
 
   @Input() log$: Observable<LogModel>;
@@ -33,11 +35,13 @@ export class AvineLogComponent implements OnInit, OnChanges, OnDestroy, AfterVie
   stepper: Stepper;
   subscription: Subscription;
 
-  constructor() { }
+  constructor(private stepperService: AvnStepperService) { }
 
   ngOnInit() {
     this.stepper = new Stepper(this.wrapper.nativeElement);
-    const subscription = this.log$.subscribe(log => this.stepper.log(log.title, log.message));
+    this.subscription =
+      merge(this.log$, this.stepperService.log$)
+        .subscribe(log => this.stepper.log(log.title, log.message));
   }
 
   ngAfterViewInit() {

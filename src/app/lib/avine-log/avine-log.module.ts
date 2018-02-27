@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AvineLogComponent } from './avine-log.component';
+
+import { AvnStepperComponent } from './avine-log.component';
+import { AvnStepperService } from './avine-log.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [AvineLogComponent],
-  exports: [AvineLogComponent]
+  providers: [
+    AvnStepperService
+  ],
+  declarations: [AvnStepperComponent],
+  exports: [AvnStepperComponent]
 })
 export class AvineLogModule { }
