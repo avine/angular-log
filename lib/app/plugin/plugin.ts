@@ -30,6 +30,9 @@ function log(title, message = '', clean = false) {
   $logItem.className = 'helper-log';
   $logItem.innerHTML = `<strong>${title}</strong>${message}`;
   $logs.appendChild($logItem);
+
+  const event = new CustomEvent('avnlog', { detail: { title, message } });
+  $logs.dispatchEvent(event);
 }
 
 function cleanLog() {

@@ -1,3 +1,8 @@
-Hello world!
+<p>
+  <button (click)="addLog()">Add log</button>
+  <button (click)="addStep()">Add step</button>
+</p>
 
-<avn-avine-log [logs]="logs"></avn-avine-log>
+<p><b>Counter:</b> {{ counter }}</p>
+
+<avn-avine-log [log$]="log$" [steps]="steps" (onlog)="listenToLogs($event)"></avn-avine-log>
