@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
-import { LogModel, StepModel } from '../../lib/app/avine-log/avine-log.model';
-import * as plugin from '../../lib/app/plugin/plugin';
+import { LogModel, StepModel } from './lib/avine-log/avine-log.model';
+import * as plugin from './lib/plugin/plugin';
 
 @Component({
-  selector: 'app-root',
+  selector: 'avn-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

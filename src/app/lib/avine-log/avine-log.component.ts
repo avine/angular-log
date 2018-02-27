@@ -17,8 +17,6 @@ import { Subscription } from 'rxjs/Subscription';
 import * as plugin from '../plugin/plugin';
 import { LogModel, StepModel } from './avine-log.model';
 
-
-
 @Component({
   selector: 'avn-avine-log',
   templateUrl: './avine-log.component.html',
