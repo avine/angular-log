@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AvnStepperComponent } from './avine-log.component';
-import { AvnStepperService } from './avine-log.service';
+import { AvnStepperComponent } from './stepper.component';
+import { AvnStepperService } from './stepper.service';
 
 @NgModule({
   imports: [
@@ -14,4 +14,4 @@ import { AvnStepperService } from './avine-log.service';
   declarations: [AvnStepperComponent],
   exports: [AvnStepperComponent]
 })
-export class AvineLogModule { }
+export class AvnStepperModule { }

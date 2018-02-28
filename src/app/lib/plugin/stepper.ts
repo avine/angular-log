@@ -18,7 +18,7 @@ export default class Stepper {
 
     // Keep reference of helper-logs and helper-step
     this.$logs = $wrapper.firstChild as HTMLElement;
-    this.$step = this.$logs.querySelector('.helper-step');
+    this.$step = this.$logs.querySelector('.helper-step') as HTMLElement;
   }
 
   constructor(private $root: HTMLElement) {

@@ -1,1 +1,1 @@
-export { AvineLogModule } from './avine-log/avine-log.module';
+export { AvnStepperModule } from './component/stepper.module';

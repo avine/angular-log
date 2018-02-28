@@ -15,14 +15,14 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { merge } from 'rxjs/observable/merge';
 
-import Stepper from '../plugin/plugin';
-import { LogModel, StepModel } from './avine-log.model';
-import { AvnStepperService } from './avine-log.service';
+import Stepper from '../plugin/stepper';
+import { LogModel, StepModel } from './stepper.model';
+import { AvnStepperService } from './stepper.service';
 
 @Component({
-  selector: 'avn-avine-log',
-  templateUrl: './avine-log.component.html',
-  styleUrls: ['./avine-log.component.scss'],
+  selector: 'avn-stepper',
+  templateUrl: './stepper.component.html',
+  styleUrls: ['./stepper.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AvnStepperComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
-import { LogModel } from './avine-log.model';
+import { LogModel } from './stepper.model';
 
 @Injectable()
 export class AvnStepperService {

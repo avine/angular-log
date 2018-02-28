@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AvineLogModule } from './lib/avine-log/avine-log.module';
+import { AvnStepperModule } from './lib/component/stepper.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { AvineLogModule } from './lib/avine-log/avine-log.module';
   ],
   imports: [
     BrowserModule,
-    AvineLogModule
+    AvnStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
-import { LogModel, StepModel } from './lib/avine-log/avine-log.model';
-import { AvnStepperService } from './lib/avine-log/avine-log.service';
+import { LogModel, StepModel } from './lib/component/stepper.model';
+import { AvnStepperService } from './lib/component/stepper.service';
 
 @Component({
   selector: 'avn-root',
