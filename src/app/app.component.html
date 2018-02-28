@@ -3,6 +3,13 @@
   <button (click)="addStep()">Add step</button>
 </p>
 
-<p><b>Counter:</b> {{ counter }}</p>
+<p>
+  <b>Steps counter:</b>
+  {{ counter }}
+</p>
 
-<avn-stepper [log$]="log$" [steps]="steps" (onlog)="listenToLogs($event)"></avn-stepper>
+<avn-stepper
+  [log$]="log$"
+  [steps]="steps"
+  (onlog)="listenToLogs($event)">
+</avn-stepper>
