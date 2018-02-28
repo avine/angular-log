@@ -1,0 +1,51 @@
+.helper-logs {
+  display: inline-block;
+  overflow: hidden;
+  margin: 1rem 0;
+  box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.05);
+  border-radius: 0.25em;
+  border: 1px solid #ddd;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 12px;
+}
+
+.helper-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 1em;
+  border-bottom: 1px solid #ddd;
+  background-color: #eee;
+  color: #999;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.helper-step {
+  user-select: none;
+  cursor: pointer;
+  margin-right: 3em;
+  color: DodgerBlue;
+}
+
+.helper-step.helper-disabled {
+  cursor: auto;
+  color: #ccc;
+  font-style: italic;
+}
+
+.helper-highlight {
+  color: FireBrick;
+}
+
+.helper-log {
+  padding: 0.5em 3em 0.5em 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.helper-log:nth-child(2n + 1) {
+  background-color: #f7f7f7;
+}
+
+.helper-log:last-child {
+  border-bottom: none;
+}

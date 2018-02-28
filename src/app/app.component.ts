@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   addStep() {
-    this.counter++;
+    this.counter += 2;
     this.steps = [
       {
         title: `Adding log ${this.counter}`,
@@ -31,6 +31,7 @@ export class AppComponent {
   }
 
   listenToLogs(e) {
+    this.counter -= 1;
     console.log('listenToLogs', e);
   }
 }

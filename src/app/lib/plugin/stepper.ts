@@ -5,6 +5,14 @@ export default class Stepper {
 
   steps = []; // Register code step by step
 
+  constructor(private $root: HTMLElement) {
+    this.initDom();
+    this.initEvent();
+
+    // Append the helper-logs HTML fragment
+    this.$root.appendChild(this.$logs);
+  }
+
   initDom() {
     // Create the helper-logs HTML fragment
     const $wrapper = document.createElement('div');
@@ -17,16 +25,13 @@ export default class Stepper {
       </section>`;
 
     // Keep reference of helper-logs and helper-step
-    this.$logs = $wrapper.firstChild as HTMLElement;
+    this.$logs = $wrapper.firstElementChild as HTMLElement;
     this.$step = this.$logs.querySelector('.helper-step') as HTMLElement;
   }
 
-  constructor(private $root: HTMLElement) {
-    this.initDom();
-    this.initEvent();
-
-    // Append the helper-logs HTML fragment
-    this.$root.appendChild(this.$logs);
+  initEvent() {
+    // Execute code step by step
+    this.$step.addEventListener('click', this.stepsHandler.bind(this));
   }
 
   log(title, message = '', clean = false) {
@@ -45,6 +50,7 @@ export default class Stepper {
     $logItem.innerHTML = `<strong>${title}</strong>${messageHTML}`;
     this.$logs.appendChild($logItem);
 
+    // Dispatch custom event
     const event = new CustomEvent('avnlog', { detail: { title, message } });
     this.$logs.dispatchEvent(event);
   }
@@ -56,13 +62,9 @@ export default class Stepper {
     );
   }
 
+  // Register a new step
   step(title, callback, clean = false) {
     this.steps.push({ title, callback, clean });
-  }
-
-  initEvent() {
-    // Execute code step by step
-    this.$step.addEventListener('click', this.stepsHandler.bind(this));
   }
 
   stepsHandler() {

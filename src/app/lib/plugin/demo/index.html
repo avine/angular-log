@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Stepper - VanillaJS demo</title>
+
+  <link rel="stylesheet" type="text/css"href="stepper.css">
+  <script src="stepper.js"></script>
+</head>
+<body>
+
+  <div id="demo"></div>
+
+  <script>
+    const $demo = document.getElementById('demo');
+    const stepper = new Stepper($demo);
+
+    stepper.step('Step 1', () => {
+      stepper.log('Hello', 'World!');
+      stepper.log('Lorem', 'ipsum');
+    });
+
+    stepper.step('Step 2', () => {
+      stepper.log('Hello', 'World!');
+      stepper.log('Lorem', 'ipsum');
+    });
+
+    const cleanLogs = true;
+
+    stepper.step('Step 3', () => {
+      stepper.log('Hello', 'World!');
+      stepper.log('Lorem', 'ipsum');
+    }, cleanLogs);
+
+    stepper.step('Step 4', () => {
+      stepper.log('Hello', 'World!');
+      stepper.log('Lorem', 'ipsum');
+    });
+  </script>
+</body>
+</html>

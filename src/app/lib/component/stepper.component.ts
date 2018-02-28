@@ -10,6 +10,7 @@ import {
   OnInit,
   Output,
   ViewChild,
+  Renderer2
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -35,7 +36,10 @@ export class AvnStepperComponent implements OnInit, OnChanges, OnDestroy, AfterV
   stepper: Stepper;
   subscription: Subscription;
 
-  constructor(private stepperService: AvnStepperService) { }
+  constructor(
+    private stepperService: AvnStepperService,
+    private renderer: Renderer2
+  ) { }
 
   ngOnInit() {
     this.stepper = new Stepper(this.wrapper.nativeElement);
@@ -45,8 +49,20 @@ export class AvnStepperComponent implements OnInit, OnChanges, OnDestroy, AfterV
   }
 
   ngAfterViewInit() {
-    this.stepper.$logs = this.wrapper.nativeElement.querySelector('.helper-logs');
-    this.stepper.$logs.addEventListener('avnlog', (event: CustomEvent) => this.onlog.emit(event.detail));
+    /*
+      // VanillaJS version
+      this.stepper.$logs.addEventListener(
+        'avnlog',
+        (event: CustomEvent) => this.onlog.emit(event.detail)
+      );
+    */
+
+    // Angularized version
+    this.renderer.listen(
+      this.stepper.$logs,
+      'avnlog',
+      (event: CustomEvent) => this.onlog.emit(event.detail)
+    );
   }
 
   ngOnChanges() {
